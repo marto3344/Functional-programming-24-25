@@ -1,0 +1,21 @@
+#lang racket
+(define (upper-bound f y)   
+  (λ(x)
+    (if(>= y (f x))
+       y
+       (f x)     
+    )   
+  )
+ )
+(define g (upper-bound(λ(x)(* 2 x))100))
+(= (g 50) 100)
+(define g1 (upper-bound(λ(x)(* 2 x))100.236))
+(= (g1 500.002) 1000.004)
+(define g2 (upper-bound(λ(x)(* 2 x))80))
+(= (g2 3) 80)
+(define g3 (upper-bound(λ(x)(* 2 x))70))
+(= (g3 30) 70)
+(define g4 (upper-bound(λ(x)(* 2 x))30))
+(= (g4 70) 140)
+(define g5 (upper-bound(λ(x)(* 2 x))8));my test
+(= (g5 5) 10)
