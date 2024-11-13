@@ -1,0 +1,27 @@
+#lang racket
+(define (num-to-list n) 
+  (define (helper leftover xs)
+     (if (zero? leftover)
+         xs
+         (helper  (quotient leftover 10) (append xs (list (remainder leftover 10))))
+      )
+    )
+  (helper  n'())
+  )
+(define (list-to-num xs)
+  (define (helper ys result)
+    (if (null? ys)
+      result
+      (helper (cdr ys) (+ (* result 10) (car ys)))
+     )
+    )
+   (helper xs 0)
+  )
+(define (palindromize n)
+  (let ([xs (sort (remove-duplicates (num-to-list n)) <)])
+    (list-to-num  (append xs (reverse xs))))
+  )  
+
+(= (palindromize 11) 11)
+(= (palindromize 3354457878) 3457887543) 
+(= (palindromize 11335445789789) 13457899875431) 

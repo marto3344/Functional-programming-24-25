@@ -1,0 +1,9 @@
+.DS_Store
+compiled/
+/doc/
+*~
+**/*.bak
+\#*
+.\#*
+week1/Task1.txt
+/exercises
